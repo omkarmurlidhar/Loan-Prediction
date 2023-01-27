@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+    <link rel="stylesheet" href="{{url_for('static', filename='form.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--code for Page load hone par only modal open ho-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#id01").modal('show');
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $('#id01').modal('show');
+        });
+    </script>
+</head>
+
+<body>
+    <div id="id01" class="modal">
+
+        <div class="container">
+            <form name="Form" action="/predict" method="post" class="modal-content"  method="POST"  id="nameform">
+                <a href="{{ url_for('index') }}" class="close" title="Close Modal">&times;</a>
+                <div class="imgcontainer">
+
+                    <img src="{{url_for('static', filename='img2.png')}}" alt="Avatar" class="avatar">
+                </div>
+                <center>
+                    <h1>Loan Prediction</h1>
+                    <div>
+                        <br><br>
+                        <h3><b>{{prediction_text}}</b></h3>
+                    </div>
+                </center>
+                <hr>
+                <h1>Enter Gender</h1> <input type="text" name="Gender" placeholder="Male / Female"   required="required" >
+                <h1>Enter Married Status</h1> <input type="text" name="Married" placeholder="Married_yes / Married_No"  required="required" >
+                <h1>Select Dependents</h1>  <select name="Dependents" required="required"  >
+                    <option selected> Dependents</option>
+                    <option value="dependent_1">dependent_1</option>
+                    <option value="dependent_2">dependent_2</option>
+                    <option value="dependent_3+">dependent_3+</option>
+                  </select><br />
+                <h1>Enter Education</h1> <input type="text" name="Education" placeholder="Graduate / Not_Graduate" required="required" >
+                <h1>Enter Self_Employed</h1>  <input type="text" name="Self_Employed" placeholder="Self_Employed_yes / Self_Employed_No" required="required" >
+                <h1>Enter ApplicantIncome</h1> <input type="text" name="ApplicantIncome" placeholder="Rs"   required="required" >
+                <h1>Enter CoapplicantIncome</h1> <input type="text" name="CoapplicantIncome" placeholder="Rs"  required="required" >
+                <h1>Enter LoanAmount</h1> <input type="text" name="LoanAmount" placeholder="Rs" required="required" >
+                <h1>Enter Credit_History</h1> <input type="text" name="Credit_History" placeholder="1 / 0" required="required" >
+                <h1>Enter Property_Area</h1> <input type="text" name="Property_Area" placeholder="Urban / Semiurban / Rural" required="required" >
+                  <br><br>
+
+                  <center>
+                    <button type="submit" class="button">Predict</button>
+                  </center>
+            </form>
+           
+        </div>
+
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
